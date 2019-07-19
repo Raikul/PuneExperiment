@@ -6,19 +6,15 @@ public class Snake360 : MonoBehaviour
 {
 
     private Rigidbody2D snake360RigidBody;
-    private Vector2 startingVelocity;
+    [SerializeField] private Vector2 startingVelocity;
 
     private void Awake()
     {
         snake360RigidBody = GetComponent<Rigidbody2D>();
-        startingVelocity = new Vector2(1, 1);
-
-    }
-
-    private void Start()
-    {
+        //startingVelocity = new Vector2(1, 1);
         snake360RigidBody.velocity = startingVelocity;
     }
+
     private void Update()
     {
         HandleInput();
@@ -33,7 +29,7 @@ public class Snake360 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            snake360RigidBody.AddForce();
+            snake360RigidBody.AddTorque(2);
 
         }
         if (Input.GetKeyDown(KeyCode.D))
@@ -41,12 +37,6 @@ public class Snake360 : MonoBehaviour
             snake360RigidBody.AddTorque(-2);
         }
 
-
-    }
-
-    private void HandleGridMovement()
-    {
-       
 
     }
 
